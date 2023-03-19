@@ -16,6 +16,21 @@ module.exports = {
 
         use: ["style-loader", "css-loader", "postcss-loader"],
       },
+      {
+        test: /\.(png|jpg|gif|svg)$/i,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192, // limit to 8KB
+              fallback: "file-loader",
+              outputPath: "images", // where to output images
+              publicPath: "/images", // public URL of the output directory
+              name: "[name].[hash:8].[ext]", // filename format
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
