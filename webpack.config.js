@@ -11,14 +11,16 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        test: /\.css$/i,
+        include: path.resolve(__dirname, "src"),
+
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "src/index.html"),
+      template: path.resolve(__dirname, "src/index-dev.html"),
       filename: "index.html", // Output the file directly to the dist directory
     }),
   ],
