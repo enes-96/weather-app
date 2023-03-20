@@ -64,6 +64,8 @@ async function getWeatherData(loc) {
     conditionOutput.textContent = capitalizeFirstLetter(
       data.weather[0]["description"]
     );
+    const timezone = data.timezone;
+    console.log(timezone);
   } catch (error) {
     console.error("Error fetching weather data:", error);
   }
