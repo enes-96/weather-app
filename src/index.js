@@ -10,6 +10,8 @@ const pressureOutput = document.getElementById("pressure");
 const humidityOutput = document.getElementById("humidity");
 const visibilityOutput = document.getElementById("visibility");
 const lastUpdateOutput = document.getElementById("lastUpdate");
+const cityOutput = document.getElementById("city");
+const conditionOutput = document.getElementById("condition");
 
 async function getWeatherData(loc) {
   const locationUrl = `https://api.openweathermap.org/data/2.5/weather?q=${loc}&appid=${apiKey}`;
@@ -18,8 +20,6 @@ async function getWeatherData(loc) {
     if (!response.ok) throw new Error("Newtork Error");
     const data = await response.json();
     const temperatureKelvin = data.main.temp;
-
-    const userLocation = loc;
 
     const celsius = Math.ceil(temperatureKelvin - 273.15);
     const fahrenheit = Math.ceil((temperatureKelvin - 273.15) * 1.8 + 32);
@@ -48,6 +48,22 @@ async function getWeatherData(loc) {
     const lastUpdate = new Date(data.dt * 1000);
     lastUpdateOutput.textContent =
       lastUpdate.getHours() + " : " + lastUpdate.getMinutes();
+
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    cityOutput.textContent = data.name;
+
+    function capitalizeWords(str) {
+      return str.replace(/\b\w/g, function (l) {
+        return l.toUpperCase();
+      });
+    }
+
+    conditionOutput.textContent = capitalizeFirstLetter(
+      data.weather[0]["description"]
+    );
   } catch (error) {
     console.error("Error fetching weather data:", error);
   }
