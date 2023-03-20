@@ -6,9 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   <script defer src="main.js"></script></head>
-  <body class="h-screen bg-slate-100">
-    <img src="/src/images/rain.png" alt="" id="bg-img" />
-    <section class="text-4xl text-red-500" id="sidebar">lsadsssssss</section>
+  <body class="h-screen bg-slate-100 text-white font-light">
+    <img src="/src/images/rain.jpg" alt="" id="bg-img" />
+    <section class="w-1/5 h-screen p-12" id="sidebar">
+      <div class="flex justify-center items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="white"
+          class="w-7 h-7 right-16 py-1 absolute"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+          />
+        </svg>
+        <input
+          class="pl-1 py-1 bg-transparent border-b-slate-200 border-b-2 outline-none"
+          type="text"
+          id="searchLocation"
+          placeholder="search"
+        />
+      </div>
+      <div class="flex items-center flex-col p-8">
+        <h2 class="text-8xl" id="temparature">20°</h2>
+        <h2 class="text-7xl" id="temparatureF">68f</h2>
+      </div>
+      <div class="flex justify-center gap-2 p-4 text-2xl">
+        <span>Wind Speed:</span>
+        <h4 id="wind-speed">24kmh</h4>
+      </div>
+      <div class="flex justify-center gap-12 p-4 text-2xl">
+        <div class="flex flex-col items-center">
+          <span class="border-b-2 border-slate-200">Sunrise</span>
+          <h3 id="sunrise">5:56</h3>
+        </div>
+        <div class="flex flex-col items-center">
+          <span class="border-b-2 border-slate-200">Sunset</span>
+          <h3 id="sunset">20:04</h3>
+        </div>
+      </div>
+    </section>
     <section id="main-content"></section>
   </body>
 </html>
