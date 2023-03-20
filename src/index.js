@@ -6,13 +6,10 @@ const weatherOutputFahrenheit = document.getElementById("temparatureF");
 const windSpeedOutput = document.getElementById("wind-speed");
 const sunriseOutput = document.getElementById("sunrise");
 const sunsetOutput = document.getElementById("sunset");
-
-let userLocation = undefined;
-let celsius = 0;
-let fahrenheit = 0;
-let windSpeed = 0;
-let sunrise = 0;
-let sunset = 0;
+const pressureOutput = document.getElementById("pressure");
+const humidityOutput = document.getElementById("humidity");
+const visibilityOutput = document.getElementById("visibility");
+const lastUpdateOutput = document.getElementById("lastUpdate");
 
 async function getWeatherData(loc) {
   const locationUrl = `https://api.openweathermap.org/data/2.5/weather?q=${loc}&appid=${apiKey}`;
@@ -22,22 +19,35 @@ async function getWeatherData(loc) {
     const data = await response.json();
     const temperatureKelvin = data.main.temp;
 
-    userLocation = loc;
+    const userLocation = loc;
 
-    celsius = Math.ceil(temperatureKelvin - 273.15);
-    fahrenheit = Math.ceil((temperatureKelvin - 273.15) * 1.8 + 32);
+    const celsius = Math.ceil(temperatureKelvin - 273.15);
+    const fahrenheit = Math.ceil((temperatureKelvin - 273.15) * 1.8 + 32);
 
     weatherOutputCelcius.textContent = celsius + "°";
     weatherOutputFahrenheit.textContent = fahrenheit + "°f";
 
-    windSpeed = data.wind.speed;
+    const windSpeed = data.wind.speed;
     windSpeedOutput.textContent = windSpeed;
 
-    sunrise = new Date(data.sys.sunrise * 1000);
-    sunset = new Date(data.sys.sunset * 1000);
+    const sunrise = new Date(data.sys.sunrise * 1000);
+    const sunset = new Date(data.sys.sunset * 1000);
 
     sunriseOutput.textContent = `${sunrise.getHours()} : ${sunrise.getMinutes()}`;
     sunsetOutput.textContent = `${sunset.getHours()} : ${sunset.getMinutes()}`;
+
+    const pressure = data.main.pressure;
+    pressureOutput.textContent = pressure + "ph";
+
+    const humidity = data.main.humidity;
+    humidityOutput.textContent = humidity + "%";
+
+    const visibility = Math.ceil(data.visibility / 1000) + "km";
+    visibilityOutput.textContent = visibility;
+
+    const lastUpdate = new Date(data.dt * 1000);
+    lastUpdateOutput.textContent =
+      lastUpdate.getHours() + " : " + lastUpdate.getMinutes();
   } catch (error) {
     console.error("Error fetching weather data:", error);
   }
