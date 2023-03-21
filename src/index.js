@@ -28,6 +28,11 @@ async function getWeatherData(loc) {
     weatherOutputCelcius.textContent = celsius + "°";
     weatherOutputFahrenheit.textContent = fahrenheit + "°f";
 
+    const feelsLikeOutput = document.getElementById("feelsLike");
+    feelsLikeOutput.textContent = `Feels like:  ${Math.ceil(
+      data.main.feels_like - 273.15
+    )} °`;
+
     const windSpeed = data.wind.speed;
     windSpeedOutput.textContent = windSpeed;
 
@@ -55,12 +60,6 @@ async function getWeatherData(loc) {
     }
 
     cityOutput.textContent = data.name + ", " + data.sys.country;
-
-    function capitalizeWords(str) {
-      return str.replace(/\b\w/g, function (l) {
-        return l.toUpperCase();
-      });
-    }
 
     conditionOutput.textContent = capitalizeFirstLetter(
       data.weather[0]["description"]
@@ -93,39 +92,63 @@ async function getWeatherForcast(loc) {
     if (!response.ok) throw new Error("Newtork Error");
     const data = await response.json();
     //
-    function getTomorrowWeather() {
-      const dateTomorrow = data.list[7]["dt_txt"];
-      const dayTomorrow = new Date(dateTomorrow).toLocaleString("en-US", {
-        weekday: "long",
-      });
-      console.log(dayTomorrow);
-    }
-    function getTomorrow2Weather() {
-      const dateTomorrow2 = data.list[15]["dt_txt"];
-      const dayTomorrow2 = new Date(dateTomorrow2).toLocaleString("en-US", {
-        weekday: "long",
-      });
-      console.log(dayTomorrow2);
-    }
-    function getTomorrow3Weather() {
-      const dateTomorrow3 = data.list[23]["dt_txt"];
-      const dayTomorrow3 = new Date(dateTomorrow3).toLocaleString("en-US", {
-        weekday: "long",
-      });
-      console.log(dayTomorrow3);
-    }
-    function getTomorrow4Weather() {
-      const dateTomorrow4 = data.list[31]["dt_txt"];
-      const dayTomorrow4 = new Date(dateTomorrow4).toLocaleString("en-US", {
-        weekday: "long",
-      });
-      console.log(dayTomorrow4);
-    }
+    (function getTomorrowWeather() {
+      const dayOutput1 = document.getElementById("tomorrow");
+      const weatherCondition = Math.ceil(data.list[7].main.temp - 273.15);
+      const weatherConditionOutput =
+        document.getElementById("weatherCondition");
+      //
+      dayOutput1.textContent = new Date(data.list[7]["dt_txt"]).toLocaleString(
+        "en-US",
+        {
+          weekday: "long",
+        }
+      );
+      weatherConditionOutput.textContent = weatherCondition + "°";
+    })();
+    (function getTomorrowWeather2() {
+      const dayOutput2 = document.getElementById("tomorrow2");
+      const weatherCondition2 = Math.ceil(data.list[15].main.temp - 273.15);
+      const weatherConditionOutput2 =
+        document.getElementById("weatherCondition2");
+      //
+      dayOutput2.textContent = new Date(data.list[15]["dt_txt"]).toLocaleString(
+        "en-US",
+        {
+          weekday: "long",
+        }
+      );
+      weatherConditionOutput2.textContent = weatherCondition2 + "°";
+    })();
+    (function getTomorrowWeather3() {
+      const dayOutput3 = document.getElementById("tomorrow3");
+      const weatherCondition3 = Math.ceil(data.list[23].main.temp - 273.15);
+      const weatherConditionOutput3 =
+        document.getElementById("weatherCondition3");
+      //
+      dayOutput3.textContent = new Date(data.list[23]["dt_txt"]).toLocaleString(
+        "en-US",
+        {
+          weekday: "long",
+        }
+      );
+      weatherConditionOutput3.textContent = weatherCondition3 + "°";
+    })();
+    (function getTomorrowWeather4() {
+      const dayOutput4 = document.getElementById("tomorrow4");
+      const weatherCondition4 = Math.ceil(data.list[31].main.temp - 273.15);
+      const weatherConditionOutput4 =
+        document.getElementById("weatherCondition4");
+      //
+      dayOutput4.textContent = new Date(data.list[31]["dt_txt"]).toLocaleString(
+        "en-US",
+        {
+          weekday: "long",
+        }
+      );
+      weatherConditionOutput4.textContent = weatherCondition4 + "°";
+    })();
     //
-    getTomorrowWeather();
-    getTomorrow2Weather();
-    getTomorrow3Weather();
-    getTomorrow4Weather();
   } catch (error) {
     console.error("Error fetching weather data:", error);
   }

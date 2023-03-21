@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body class="h-screen text-white font-light flex">
-    <img src="/src/images/rain.jpg" alt="" id="bg-img" />
+  <body class="h-screen text-slate-700 font-light flex bg-zinc-300">
     <section
       class="w-1/5 h-screen p-12 border-2 flex flex-col items-center justify-between"
       id="sidebar"
@@ -18,8 +17,7 @@
           fill="none"
           viewBox="0 0 24 24"
           stroke-width="1.5"
-          stroke="white"
-          class="w-7 h-7 right-16 py-1 absolute"
+          class="stroke-slate-700 w-7 h-7 right-16 py-1 absolute"
         >
           <path
             stroke-linecap="round"
@@ -28,7 +26,7 @@
           />
         </svg>
         <input
-          class="pl-1 py-1 bg-transparent border-b-slate-200 border-b-2 outline-none"
+          class="pl-1 py-1 bg-transparent border-b-slate-500 border-b-2 outline-none"
           type="text"
           id="searchLocation"
           placeholder="search city"
@@ -38,12 +36,21 @@
         <h2 class="text-8xl" id="temparature">N/A</h2>
         <h2 class="text-5xl" id="temparatureF">N/A</h2>
       </div>
-      <div class="flex justify-center gap-1 p-4 text-xl">
+      <div
+        class="glass-effect rounded-md items-center w-full h-12 flex justify-center gap-2text-xl"
+      >
+        <h5 id="feelsLike">N/A</h5>
+      </div>
+      <div
+        class="glass-effect rounded-md items-center w-full h-12 flex justify-center gap-2 text-xl"
+      >
         <span>Wind Speed:</span>
         <h4 id="wind-speed">N/A</h4>
         <span>km/h</span>
       </div>
-      <div class="flex justify-center gap-12 p-4 text-xl">
+      <div
+        class="glass-effect rounded-md items-center w-full h-16 flex justify-center gap-12 text-xl"
+      >
         <div class="flex flex-col items-center">
           <span class="border-b-2 border-slate-200">Sunrise</span>
           <h3 id="sunrise">N/A</h3>
@@ -53,19 +60,27 @@
           <h3 id="sunset">N/A</h3>
         </div>
       </div>
-      <div class="flex justify-center gap-2 p-4 text-xl">
+      <div
+        class="glass-effect rounded-md items-center w-full h-12 flex justify-center gap-2 text-xl"
+      >
         <span>Pressure:</span>
         <h4 id="pressure">N/A</h4>
       </div>
-      <div class="flex justify-center gap-2 p-4 text-xl">
+      <div
+        class="glass-effect rounded-md items-center w-full h-12 flex justify-center gap-2 text-xl"
+      >
         <span>Humidity:</span>
         <h4 id="humidity">N/A</h4>
       </div>
-      <div class="flex justify-center gap-2 p-4 text-xl">
+      <div
+        class="glass-effect rounded-md items-center w-full h-12 flex justify-center gap-2 text-xl"
+      >
         <span>Visibility:</span>
         <h4 id="visibility">N/A</h4>
       </div>
-      <div class="flex gap-2 text-md">
+      <div
+        class="glass-effect rounded-md items-center w-full h-12 flex gap-2 justify-center text-md"
+      >
         <span>Weather Last Updated:</span>
         <h4 id="lastUpdate">N/A</h4>
       </div>
@@ -77,15 +92,25 @@
         SkyCast°
       </p>
       <h6 class="text-5xl pt-24" id="city">N/A</h6>
-      <h1 class="text-9xl pt-2 text-slate-200 font-light" id="condition">
-        N/A
-      </h1>
+      <h1 class="text-9xl pt-2 font-light" id="condition">N/A</h1>
       <h6 class="flex gap-2 pt-4 text-2xl" id="currentDate">N/A</h6>
       <div class="flex h-3/5 justify-between items-end">
-        <div id="tomorrow" class="card w-1/5 h-4/5 p-4"></div>
-        <div id="tomorrow2" class="card w-1/5 h-4/5"></div>
-        <div id="tomorrow3" class="card w-1/5 h-4/5"></div>
-        <div id="tomorrow4" class="card w-1/5 h-4/5"></div>
+        <div class="card w-1/5 h-4/5 p-6 text-center glass-effect">
+          <h5 class="text-3xl" id="tomorrow">N/A</h5>
+          <h6 class="text-6xl py-6" id="weatherCondition">N/A</h6>
+        </div>
+        <div class="card w-1/5 h-4/5 p-6 text-center glass-effect">
+          <h5 class="text-3xl" id="tomorrow2">N/A</h5>
+          <h6 class="text-6xl py-6" id="weatherCondition2">N/A</h6>
+        </div>
+        <div class="card w-1/5 h-4/5 p-6 text-center glass-effect">
+          <h5 class="text-3xl" id="tomorrow3">N/A</h5>
+          <h6 class="text-6xl py-6" id="weatherCondition3">N/A</h6>
+        </div>
+        <div class="card w-1/5 h-4/5 p-6 text-center glass-effect">
+          <h5 class="text-3xl" id="tomorrow4">N/A</h5>
+          <h6 class="text-6xl py-6" id="weatherCondition4">N/A</h6>
+        </div>
       </div>
     </section>
   </body>
