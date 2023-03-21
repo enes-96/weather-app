@@ -34,7 +34,7 @@ async function getWeatherData(loc) {
     )} °`;
 
     const windSpeed = data.wind.speed;
-    windSpeedOutput.textContent = `Wind Speed: ${windSpeed} km/h`;
+    windSpeedOutput.textContent = `Wind : ${windSpeed} km/h`;
 
     const sunrise = new Date(data.sys.sunrise * 1000);
     const sunset = new Date(data.sys.sunset * 1000);
@@ -78,7 +78,68 @@ async function getWeatherData(loc) {
       [],
       options
     )}`;
-
+    //
+    const weatherEmojiOutput = document.getElementById("weatherEmoji");
+    const weatherCode = data.weather[0].id;
+    const emojiMap = {
+      200: "⛈️",
+      201: "⛈️",
+      202: "⛈️",
+      210: "🌩️",
+      211: "🌩️",
+      212: "🌩️",
+      221: "🌩️",
+      230: "⛈️",
+      231: "⛈️",
+      232: "⛈️",
+      300: "🌧️",
+      301: "🌧️",
+      302: "🌧️",
+      310: "🌧️",
+      311: "🌧️",
+      312: "🌧️",
+      313: "🌧️",
+      314: "🌧️",
+      321: "🌧️",
+      500: "🌦️",
+      501: "🌦️",
+      502: "🌦️",
+      503: "🌦️",
+      504: "🌦️",
+      511: "❄️",
+      520: "🌧️",
+      521: "🌧️",
+      522: "🌧️",
+      531: "🌧️",
+      600: "❄️",
+      601: "❄️",
+      602: "❄️",
+      611: "❄️",
+      612: "❄️",
+      613: "❄️",
+      615: "❄️",
+      616: "❄️",
+      620: "❄️",
+      621: "❄️",
+      622: "❄️",
+      701: "🌫️",
+      711: "🌫️",
+      721: "🌫️",
+      731: "🌫️",
+      741: "🌫️",
+      751: "🌫️",
+      761: "🌫️",
+      762: "🌋",
+      771: "💨",
+      781: "🌪️",
+      800: "☀️",
+      801: "🌤️",
+      802: "⛅",
+      803: "🌥️",
+      804: "☁️",
+    };
+    const weatherEmoji = emojiMap[weatherCode];
+    weatherEmojiOutput.textContent = weatherEmoji;
     ///////////////////
   } catch (error) {
     console.error("Error fetching weather data:", error);
@@ -98,7 +159,6 @@ async function getWeatherForcast(loc) {
     //
     //
     (function getTomorrowWeather() {
-      console.log(data.list[7]);
       //display the name of the day
       const dayOutput1 = document.getElementById("tomorrow");
       const dayName = new Date(data.list[7]["dt_txt"]).toLocaleString("en-US", {
@@ -120,7 +180,7 @@ async function getWeatherForcast(loc) {
       //display wind speed
       const windSpeed1 = data.list[7].wind.speed;
       const windSpeed1Output = document.getElementById("windSpeedTomorrow");
-      windSpeed1Output.textContent = `Wind Speed ${windSpeed1} km/h`;
+      windSpeed1Output.textContent = `Wind  ${windSpeed1} km/h`;
     })();
     (function getTomorrowWeather2() {
       const dayOutput2 = document.getElementById("tomorrow2");
@@ -144,7 +204,7 @@ async function getWeatherForcast(loc) {
       //
       const windSpeed2 = data.list[15].wind.speed;
       const windSpeed2Output = document.getElementById("windSpeedTomorrow2");
-      windSpeed2Output.textContent = `Wind Speed ${windSpeed2} km/h`;
+      windSpeed2Output.textContent = `Wind  ${windSpeed2} km/h`;
       //
     })();
     (function getTomorrowWeather3() {
@@ -169,7 +229,7 @@ async function getWeatherForcast(loc) {
       //
       const windSpeed3 = data.list[23].wind.speed;
       const windSpeed3Output = document.getElementById("windSpeedTomorrow3");
-      windSpeed3Output.textContent = `Wind Speed ${windSpeed3} km/h`;
+      windSpeed3Output.textContent = `Wind  ${windSpeed3} km/h`;
     })();
     (function getTomorrowWeather4() {
       const dayOutput4 = document.getElementById("tomorrow4");
@@ -193,7 +253,7 @@ async function getWeatherForcast(loc) {
       //
       const windSpeed4 = data.list[31].wind.speed;
       const windSpeed4Output = document.getElementById("windSpeedTomorrow4");
-      windSpeed4Output.textContent = `Wind Speed ${windSpeed4} km/h`;
+      windSpeed4Output.textContent = `Wind  ${windSpeed4} km/h`;
     })();
     //
   } catch (error) {
