@@ -80,6 +80,7 @@ async function getWeatherData(loc) {
       [],
       options
     )}`;
+
     ///////////////////
   } catch (error) {
     console.error("Error fetching weather data:", error);
@@ -92,14 +93,39 @@ async function getWeatherForcast(loc) {
     if (!response.ok) throw new Error("Newtork Error");
     const data = await response.json();
     //
-    const dateTomorrow = data.list[7];
-    const dateTomorrow2 = data.list[15];
-    const dateTomorrow3 = data.list[23];
-    const dateTomorrow4 = data.list[31];
-
-    console.log(dateTomorrow);
-
-    //immer 8plus
+    function getTomorrowWeather() {
+      const dateTomorrow = data.list[7]["dt_txt"];
+      const dayTomorrow = new Date(dateTomorrow).toLocaleString("en-US", {
+        weekday: "long",
+      });
+      console.log(dayTomorrow);
+    }
+    function getTomorrow2Weather() {
+      const dateTomorrow2 = data.list[15]["dt_txt"];
+      const dayTomorrow2 = new Date(dateTomorrow2).toLocaleString("en-US", {
+        weekday: "long",
+      });
+      console.log(dayTomorrow2);
+    }
+    function getTomorrow3Weather() {
+      const dateTomorrow3 = data.list[23]["dt_txt"];
+      const dayTomorrow3 = new Date(dateTomorrow3).toLocaleString("en-US", {
+        weekday: "long",
+      });
+      console.log(dayTomorrow3);
+    }
+    function getTomorrow4Weather() {
+      const dateTomorrow4 = data.list[31]["dt_txt"];
+      const dayTomorrow4 = new Date(dateTomorrow4).toLocaleString("en-US", {
+        weekday: "long",
+      });
+      console.log(dayTomorrow4);
+    }
+    //
+    getTomorrowWeather();
+    getTomorrow2Weather();
+    getTomorrow3Weather();
+    getTomorrow4Weather();
   } catch (error) {
     console.error("Error fetching weather data:", error);
   }
