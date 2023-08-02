@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+main {
+  background-image: url(/src/images/elia-clerici-XIrIWKCQykg-unsplash.jpg);
+
+  background-position: bottom;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 1000px;
+  height: 600px;
+}
