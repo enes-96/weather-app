@@ -12,4 +12,6 @@ const getWeatherData = async (city) => {
     }
 }
 
+
+
 export default getWeatherData
