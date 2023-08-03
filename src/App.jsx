@@ -30,7 +30,9 @@ const App = () => {
         <Header onSearch={fetchWeatherData} />
         <DisplayWeather data={weatherData} />
         <HourlyWeather hourlyData={hourlyData} />
+
       </main>
+
     </div>
   );
 };

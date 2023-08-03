@@ -7,11 +7,12 @@ const DisplayWeather = ({ data }) => {
 
     const { name, main, weather, wind } = data;
 
+
     return (
-        <div className="flex justify-center text-center my-6 ">
+        <div className="flex justify-center text-center my-3 ">
             <div className="text-white w-56">
-                <h2 className="text-4xl font-light">{name}</h2>
-                <h1 className="text-5xl font-light">{Math.floor(main.temp)}°C</h1>
+                <h2 className="text-3xl font-light">{name}</h2>
+                <h1 className="text-5xl font-extralight">{Math.floor(main.temp)}°</h1>
                 <h3 className="text-base font-semibold">{weather[0].description}</h3>
                 <div className="flex justify-center gap-2 text-base font-semibold">
                     <div className="flex items-center ">

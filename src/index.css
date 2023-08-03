@@ -3,11 +3,17 @@
 @tailwind utilities;
 
 main {
-  background-image: url(/src/images/elia-clerici-XIrIWKCQykg-unsplash.jpg);
-
   background-position: bottom;
   background-attachment: fixed;
   background-size: cover;
-  width: 1000px;
-  height: 600px;
+  width: 980px;
+  height: 640px;
+}
+
+#forecastList::-webkit-scrollbar {
+  display: none;
+}
+#forecastTitleLine {
+  height: 0.5px;
+  width: 2210px;
 }
