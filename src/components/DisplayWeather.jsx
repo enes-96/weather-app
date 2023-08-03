@@ -4,15 +4,14 @@ const DisplayWeather = ({ data }) => {
     if (!data) {
         return <div>No weather data available</div>;
     }
-    const { name, main, weather, wind } = data;
 
-    console.log()
+    const { name, main, weather, wind } = data;
 
     return (
         <div className="flex justify-center text-center my-6 ">
             <div className="text-white w-56">
                 <h2 className="text-4xl font-light">{name}</h2>
-                <h1 className="text-5xl font-light">{Math.floor(main.temp) * 1}°C</h1>
+                <h1 className="text-5xl font-light">{Math.floor(main.temp)}°C</h1>
                 <h3 className="text-base font-semibold">{weather[0].description}</h3>
                 <div className="flex justify-center gap-2 text-base font-semibold">
                     <div className="flex items-center ">
@@ -26,17 +25,25 @@ const DisplayWeather = ({ data }) => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 DisplayWeather.propTypes = {
     data: PropTypes.shape({
         name: PropTypes.string,
-        main: PropTypes.object,
-        weather: PropTypes.array,
-        wind: PropTypes.object
+        main: PropTypes.shape({
+            temp: PropTypes.number,
+            humidity: PropTypes.number,
+        }),
+        weather: PropTypes.arrayOf(
+            PropTypes.shape({
+                description: PropTypes.string,
+            })
+        ),
+        wind: PropTypes.shape({
+            speed: PropTypes.number,
+        }),
     }),
 };
 
-export default DisplayWeather
-
+export default DisplayWeather;

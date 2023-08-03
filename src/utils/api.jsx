@@ -5,13 +5,21 @@ const BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
 const getWeatherData = async (city) => {
     try {
-        const response = await axios.get(`${BASE_URL}/weather?q=${city}&appid=${API_KEY}&units=metric`)
-        return response.data
+        const response = await axios.get(`${BASE_URL}/weather?q=${city}&appid=${API_KEY}&units=metric`);
+        return response.data;
     } catch (error) {
-        throw new Error("Failed to fetch the weather data")
+        throw new Error("Failed to fetch the weather data", error);
     }
-}
+};
+
+const getHourlyWeatherData = async (city) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/forecast?q=${city}&appid=${API_KEY}&units=metric`);
+        return response.data;
+    } catch (error) {
+        throw new Error("Failed to fetch the forecast weather data", error);
+    }
+};
 
 
-
-export default getWeatherData
+export { getWeatherData, getHourlyWeatherData };
