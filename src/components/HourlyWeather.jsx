@@ -5,9 +5,9 @@ const HourlyWeather = ({ hourlyData }) => {
         return <div>No hourly forecast</div>;
     }
 
-    console.log(hourlyData)
+
     return (
-        <div id="forecastList" className="mt-11 flex flex-col items-start text-sm text-center w-full p-2 rounded-xl relative bg-opacity-20 text-white bg-black backdrop-blur-3xl font-semibold overflow-scroll">
+        <div id="forecastList" className="mt-11 mb-6 flex flex-col items-start text-sm text-center w-full p-2 rounded-xl relative bg-opacity-20 text-white bg-black backdrop-blur-3xl font-semibold overflow-scroll">
             <h4 className="pl-3 font-light ">Weather Forecast</h4>
             <div id="forecastTitleLine" className="ml-3 m-1 bg-white"></div>
             <div className="">
@@ -17,7 +17,6 @@ const HourlyWeather = ({ hourlyData }) => {
                             <p>{hour.dt_txt.slice(11, 13)}</p>
                             <img
                                 src={`http://openweathermap.org/img/w/${hour.weather[0].icon}.png`}
-                                alt={hour.weather[0].description}
                                 className="mx-auto h-8"
                             />
                             <p>{Math.floor(hour.main.temp)}°</p>
