@@ -11,7 +11,7 @@ main {
 }
 
 #weatherGrid {
-  height: 420px;
+  height: fit-content;
 }
 
 ::-webkit-scrollbar {

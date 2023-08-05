@@ -15,23 +15,22 @@ const AirQuality = ({ airData, className }) => {
         return <div>No air quality data available</div>;
     }
 
-    console.log(airData.list);
 
     const aqi = airData.list[0].main.aqi;
     const aqiLabel = getAqiLabel(aqi);
 
     return (
-        <div className={`w-80 p-3 h-max flex flex-col rounded-xl relative bg-opacity-20 text-white bg-black backdrop-blur-3xl font-semibold ${className}`}>
-            <div className="flex gap-2 items-center text-gray-100 font-light">
+        <div className={` p-3 justify-between  flex flex-col rounded-xl relative bg-opacity-20 text-white bg-black backdrop-blur-3xl font-semibold ${className}`}>
+            <div className="flex gap-2 items-center text-xs text-gray-100 font-light ">
                 <BsSnow />
                 <h4 className="">Air Quality</h4>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 ">
                 <div className="">{aqi}</div>
                 <span>-</span>
                 <div className="">{aqiLabel}</div>
             </div>
-            <p>The AQI (Air Quality Index) is a standardized way to represent the quality of the air. It ranges from 1 to 5, with each number corresponding to a specific level of air quality</p>
+            <p className="text-xs">The AQI ranges from 1 to 5, with each number corresponding to a specific level of air quality</p>
         </div>
     );
 };
