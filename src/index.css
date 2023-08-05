@@ -10,6 +10,10 @@ main {
   height: 640px;
 }
 
+#weatherGrid {
+  height: 420px;
+}
+
 ::-webkit-scrollbar {
   width: 14px;
 }
@@ -23,12 +27,4 @@ main {
 
 #forecastList::-webkit-scrollbar {
   display: none;
-}
-
-#forecastTitleLine {
-  height: 0.5px;
-  width: 2210px;
-}
-#dayForecastTitle {
-  height: 1px;
 }

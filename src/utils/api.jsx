@@ -21,5 +21,14 @@ const getHourlyWeatherData = async (city) => {
     }
 };
 
+const getAirQuality = async (city) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/air_pollution?lat=${city.coord?.lat}&lon=${city.coord?.lon}&appid=${API_KEY}`);
 
-export { getWeatherData, getHourlyWeatherData };
+        return response.data;
+    } catch (error) {
+        throw new Error("Failed to fetch the forecast weather data", error);
+    }
+};
+
+export { getWeatherData, getHourlyWeatherData, getAirQuality };

@@ -1,17 +1,16 @@
 import PropTypes from "prop-types";
 
-const HourlyWeather = ({ hourlyData }) => {
+const HourlyWeather = ({ hourlyData, className }) => {
     if (!hourlyData) {
         return <div>No hourly forecast</div>;
     }
 
 
     return (
-        <div id="forecastList" className="mt-11 mb-6 flex flex-col items-start text-sm text-center w-full p-2 rounded-xl relative bg-opacity-20 text-white bg-black backdrop-blur-3xl font-semibold overflow-scroll">
-            <h4 className="pl-3 font-light ">Weather Forecast</h4>
-            <div id="forecastTitleLine" className="ml-3 m-1 bg-white"></div>
+        <div id="forecastList" className={`flex flex-col items-start text-sm text-center w-full p-2 rounded-xl relative bg-opacity-20 text-white bg-black backdrop-blur-3xl font-semibold overflow-scroll ${className}`}>
+            <h4 className="px-2">Weather Forecast</h4>
             <div className="">
-                <div className="flex gap-2">
+                <div className="flex gap-2 ">
                     {hourlyData.list.map((hour, index) => (
                         <div className="h-28 w-12 flex flex-col justify-between p-2 rounded-md " key={index}>
                             <p>{hour.dt_txt.slice(11, 13)}</p>
@@ -45,6 +44,8 @@ HourlyWeather.propTypes = {
             })
         ),
     }),
+    className: PropTypes.string, // Adding the className prop
+
 };
 
 export default HourlyWeather;

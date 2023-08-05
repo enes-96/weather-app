@@ -1,18 +1,22 @@
 import PropTypes from "prop-types";
+import { HiCalendarDays } from "react-icons/hi2"
 
-const DailyWeather = ({ dailyData }) => {
+const DailyWeather = ({ dailyData, className }) => {
     if (!dailyData) {
         return <div>No daily forecast</div>;
     }
-    console.log(dailyData);
 
+    // Filter out elements that are located at an index which is a multiple of 8.
+    const filteredData = dailyData.list.filter((day, index) => index % 8 === 0);
     return (
-        <div id="" className=" w-80 mb-6 flex flex-col items-start text-sm p-2 rounded-xl relative bg-opacity-20 text-white bg-black backdrop-blur-3xl font-semibold ov› erflow-scroll">
-            <h4 className="pl-3 font-light">Weather Forecast</h4>
-            <div id="dayForecastTitle" className="m-1 mx-auto w-full bg-white"></div>
-            <div className=" flex flex-col text-sm">
-                {dailyData.list.map((day, index) => (
-                    <div className="flex justify-between p-1 w-72  items-center border-white border-b" key={index}>
+        <div id="" className={`w-80 mb-6 flex flex-col items-start text-sm p-2 rounded-xl relative bg-opacity-20 text-white bg-black backdrop-blur-3xl font-semibold ${className}`} >
+            <div className="flex px-2 gap-2 items-center text-gray-100 font-light">
+                <HiCalendarDays />
+                <h4 className="">Weather Forecast</h4>
+            </div>
+            <div className="flex flex-col text-sm p-2">
+                {filteredData.map((day, index) => (
+                    <div className="flex justify-between py-1 w-72 items-center border-white border-b" key={index}>
                         <p>{new Date(day.dt * 1000).toLocaleDateString('en-US', { weekday: 'long' })}</p>
                         <img
                             src={`http://openweathermap.org/img/w/${day.weather[0].icon}.png`}
@@ -23,7 +27,7 @@ const DailyWeather = ({ dailyData }) => {
                     </div>
                 ))}
             </div>
-        </div>
+        </div >
     );
 };
 
@@ -44,6 +48,7 @@ DailyWeather.propTypes = {
             })
         ),
     }),
+    className: PropTypes.string.isRequired
 };
 
 export default DailyWeather;
