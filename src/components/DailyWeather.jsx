@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { HiCalendarDays } from "react-icons/hi2"
+import { HiCalendarDays } from "react-icons/hi2";
 
 const DailyWeather = ({ dailyData, className }) => {
     if (!dailyData) {
@@ -10,7 +10,7 @@ const DailyWeather = ({ dailyData, className }) => {
     const filteredData = dailyData.list.filter((day, index) => index % 8 === 0);
 
     return (
-        <div id="" className={` p-3 rounded-xl relative bg-opacity-20 text-white bg-black backdrop-blur-3xl ${className}`} >
+        <div className={`p-3 rounded-xl relative bg-opacity-20 text-white bg-black backdrop-blur-3xl ${className}`}>
             <div className="flex gap-2 items-center text-gray-100 font-light text-xs">
                 <HiCalendarDays />
                 <h4 className="">Weather Forecast</h4>
@@ -18,20 +18,20 @@ const DailyWeather = ({ dailyData, className }) => {
             <div className="flex flex-col text-sm">
                 <div className="flex flex-col items-stretch text-sm">
                     {filteredData.map((day, index) => (
-                        <div className={`flex items-center justify-between border-b py-1 ${index === filteredData.length - 1 ? "border-b-0 pb-0" : ''}`} key={index}>
-                            <p className=" w-20">{new Date(day.dt * 1000).toLocaleDateString('en-US', { weekday: 'long' })}</p>
+                        <div style={{ padding: "6px 0" }} className="flex items-center justify-between border-b" key={index}>
+                            <p className="w-20">{new Date(day.dt * 1000).toLocaleDateString('en-US', { weekday: 'long' })}</p>
                             <img
                                 src={`http://openweathermap.org/img/w/${day.weather[0].icon}.png`}
                                 className="h-8"
                                 alt={day.weather[0].description}
                             />
+                            <p>{day.weather[0].main}</p>
                             <p>{Math.floor(day.main.temp)}°</p>
                         </div>
                     ))}
                 </div>
-
             </div>
-        </div >
+        </div>
     );
 };
 
@@ -47,12 +47,13 @@ DailyWeather.propTypes = {
                     PropTypes.shape({
                         icon: PropTypes.string,
                         description: PropTypes.string,
+                        main: PropTypes.string,
                     })
                 ),
             })
         ),
     }),
-    className: PropTypes.string.isRequired
+    className: PropTypes.string.isRequired,
 };
 
 export default DailyWeather;
