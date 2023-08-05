@@ -35,8 +35,8 @@ const App = () => {
   }, []);
 
   return (
-    <div className="grid place-items-center h-screen overflow-hidden cursor-default">
-      <main className="bg-sky-400 rounded-2xl p-6 overflow-hidden">
+    <div id="app" className="grid place-items-center h-screen overflow-hidden cursor-default">
+      <main className="z-20 bg-transparent rounded-2xl p-6 overflow-hidden bg-sky-400">
         <Header onSearch={fetchWeatherData} />
         <DisplayWeather data={weatherData} />
         <div id="weatherGrid" className="grid gap-4 grid-cols-12 ">

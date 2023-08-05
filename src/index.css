@@ -3,17 +3,22 @@
 @tailwind utilities;
 
 main {
-  background-position: bottom;
-  background-attachment: fixed;
-  background-size: cover;
   max-width: 980px;
+  height: 728px;
+  background-image: linear-gradient(
+    to left bottom,
+    #0014ff,
+    #0078ff,
+    #00adff,
+    #00d8ff,
+    #a9fcff
+  );
 }
 
 #weatherGrid {
   height: fit-content;
 }
 
-/* Scrollbar Styling (Note: Might not work in all browsers) */
 #forecastList::-webkit-scrollbar {
   display: none;
 }
