@@ -7,22 +7,10 @@ main {
   background-attachment: fixed;
   background-size: cover;
   width: 980px;
-  height: 640px;
 }
 
 #weatherGrid {
   height: fit-content;
-}
-
-::-webkit-scrollbar {
-  width: 14px;
-}
-
-::-webkit-scrollbar-thumb {
-  border: 4px solid rgba(0, 0, 0, 0);
-  background-clip: padding-box;
-  border-radius: 9999px;
-  background-color: #ffffff5f;
 }
 
 #forecastList::-webkit-scrollbar {

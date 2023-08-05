@@ -9,7 +9,7 @@ const DisplayWeather = ({ data }) => {
 
 
     return (
-        <div className="flex justify-center text-center ">
+        <div className="flex justify-center text-center py-10">
             <div className="text-white w-56">
                 <h2 className="text-3xl font-light">{name}</h2>
                 <h1 className="text-5xl font-extralight">{Math.floor(main.temp)}°</h1>
