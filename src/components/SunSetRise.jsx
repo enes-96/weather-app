@@ -33,6 +33,10 @@ const SunSetRise = ({ weatherData, className }) => {
 
 SunSetRise.propTypes = {
     weatherData: PropTypes.shape({
+        sys: PropTypes.shape({
+            sunrise: PropTypes.number.isRequired,
+            sunset: PropTypes.number.isRequired,
+        }).isRequired,
     }),
     className: PropTypes.string.isRequired,
 };

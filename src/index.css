@@ -6,13 +6,14 @@ main {
   background-position: bottom;
   background-attachment: fixed;
   background-size: cover;
-  width: 980px;
+  max-width: 980px;
 }
 
 #weatherGrid {
   height: fit-content;
 }
 
+/* Scrollbar Styling (Note: Might not work in all browsers) */
 #forecastList::-webkit-scrollbar {
   display: none;
 }
