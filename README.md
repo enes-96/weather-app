@@ -1,8 +1,21 @@
-# React + Vite
+Description
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Weather App with React is a user-friendly web application that allows users to quickly retrieve and display basic weather data for a specified location using the OpenWeather API. Users can easily obtain current weather conditions, temperature, humidity, and other relevant information for a desired city.
 
-Currently, two official plugins are available:
+Demo
+You can try out the live demo here.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Installation
+To run the Text Analyzer locally on your machine, follow these steps:
+
+Clone this repository
+Navigate to the project directory
+Install dependencies: npm install
+Start the development server: npm run dev
+Open your browser and visit: http://localhost:3000
+Technologies Used
+React
+JavaScript
+Vite
+Tailwind
+Openweather Api
