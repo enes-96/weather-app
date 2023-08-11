@@ -13,7 +13,7 @@ const DailyWeather = ({ dailyData, className }) => {
         <div className={`p-3 rounded-xl relative bg-opacity-20 text-white bg-black backdrop-blur-3xl ${className}`}>
             <div className="flex gap-2 items-center text-gray-100 font-light text-xs">
                 <HiCalendarDays />
-                <h4 className="">Weather Forecast</h4>
+                <h4 className="">Daily Forecast</h4>
             </div>
             <div className="flex flex-col text-sm">
                 <div className="flex flex-col items-stretch text-sm">
