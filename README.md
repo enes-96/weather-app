@@ -5,7 +5,7 @@
 Weather App with React is a user-friendly web application that allows users to quickly retrieve and display basic weather data for a specified location using the OpenWeather API. Users can easily obtain current weather conditions, temperature, humidity, and other relevant information for a desired city.
 
 ## Demo
-You can try out the live demo here.
+You can try out the live demo here https://enes-96-weather-app.netlify.app/
 
 ## Installation
 To run the Text Analyzer locally on your machine, follow these steps:
