@@ -34,8 +34,12 @@ const App = () => {
     fetchWeatherData("vienna");
   }, []);
 
+
+  if (!weatherData && !forecastData) return <div className="absolute h-screen w-screen bg-blue-500">loading...</div>
+
   return (
     <div id="app" className="grid place-items-center h-screen overflow-hidden cursor-default">
+
       <main className="z-20 bg-transparent rounded-2xl p-6 overflow-hidden bg-sky-400">
         <Header onSearch={fetchWeatherData} />
         <DisplayWeather data={weatherData} />
