@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
-import { getWeatherData, getHourlyWeatherData, getAirQuality } from "./utils/api";
+import {
+  getWeatherData,
+  getHourlyWeatherData,
+  getAirQuality,
+} from "./utils/api";
 import Header from "./components/Header";
 import DisplayWeather from "./components/DisplayWeather";
 import HourlyWeather from "./components/HourlyWeather";
@@ -16,6 +20,7 @@ const App = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState(null);
   const [airQuality, setAirQuality] = useState(null);
+
   const fetchWeatherData = async (city) => {
     try {
       const data = await getWeatherData(city);
@@ -23,36 +28,77 @@ const App = () => {
       const air = await getAirQuality(data); // Pass weather data instead of city
       setWeatherData(data);
       setForecastData(forecast);
-      console.log(data)
+      console.log(data);
       setAirQuality(air);
     } catch (error) {
       console.error("FetchWeatherData", error);
     }
   };
 
+  const successCallback = (position) => {
+    console.log(position);
+  };
+
+  const errorCallback = (error) => {
+    console.log(error);
+  };
+
+  navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+
   useEffect(() => {
     fetchWeatherData("vienna");
   }, []);
 
-
-  if (!weatherData && !forecastData) return <div className="absolute h-screen w-screen bg-blue-500">loading...</div>
+  if (!weatherData && !forecastData)
+    return (
+      <div className="absolute h-screen w-screen bg-blue-500">loading...</div>
+    );
 
   return (
-    <div id="app" className="grid place-items-center h-screen overflow-hidden cursor-default">
-
+    <div
+      id="app"
+      className="grid place-items-center h-screen overflow-hidden cursor-default"
+    >
       <main className="z-20 bg-transparent rounded-2xl p-6 overflow-hidden bg-sky-400">
         <Header onSearch={fetchWeatherData} />
         <DisplayWeather data={weatherData} />
         <div id="weatherGrid" className="grid gap-4 grid-cols-12 ">
-          <HourlyWeather hourlyData={forecastData} className={"col-span-12 row-span-1 "} />
-          <DailyWeather dailyData={forecastData} className={"col-start-1 col-end-5 row-start-2 row-end-4 "} />
-          <AirQuality airData={airQuality} className="col-start-5 col-end-9 row-start-2 row-end-3 h-32 " />
-          <FeelsLike weatherData={weatherData} className="  col-start-9 col-end-11 h-32 32" />
-          <WindSpeed weatherData={weatherData} className="  col-start-11 col-end-13 h-32 " />
-          <Pressure weatherData={weatherData} className="  col-start-5 col-end-7 h-32 " />
-          <Humidity weatherData={weatherData} className="  col-start-7 col-end-9 h-32 " />
-          <Visibility weatherData={weatherData} className="  col-start-9 col-end-11 h-32 " />
-          <SunSetRise weatherData={weatherData} className="  col-start-11 col-end-13 h-32 " />
+          <HourlyWeather
+            hourlyData={forecastData}
+            className={"col-span-12 row-span-1 "}
+          />
+          <DailyWeather
+            dailyData={forecastData}
+            className={"col-start-1 col-end-5 row-start-2 row-end-4 "}
+          />
+          <AirQuality
+            airData={airQuality}
+            className="col-start-5 col-end-9 row-start-2 row-end-3 h-32 "
+          />
+          <FeelsLike
+            weatherData={weatherData}
+            className="  col-start-9 col-end-11 h-32 32"
+          />
+          <WindSpeed
+            weatherData={weatherData}
+            className="  col-start-11 col-end-13 h-32 "
+          />
+          <Pressure
+            weatherData={weatherData}
+            className="  col-start-5 col-end-7 h-32 "
+          />
+          <Humidity
+            weatherData={weatherData}
+            className="  col-start-7 col-end-9 h-32 "
+          />
+          <Visibility
+            weatherData={weatherData}
+            className="  col-start-9 col-end-11 h-32 "
+          />
+          <SunSetRise
+            weatherData={weatherData}
+            className="  col-start-11 col-end-13 h-32 "
+          />
         </div>
       </main>
     </div>
