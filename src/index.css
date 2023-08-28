@@ -22,3 +22,7 @@ main {
 #forecastList::-webkit-scrollbar {
   display: none;
 }
+
+#sidebar {
+  height: 680px;
+}

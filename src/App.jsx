@@ -35,18 +35,8 @@ const App = () => {
     }
   };
 
-  const successCallback = (position) => {
-    console.log(position);
-  };
-
-  const errorCallback = (error) => {
-    console.log(error);
-  };
-
-  navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-
   useEffect(() => {
-    fetchWeatherData("vienna");
+    fetchWeatherData("New York");
   }, []);
 
   if (!weatherData && !forecastData)
@@ -57,10 +47,10 @@ const App = () => {
   return (
     <div
       id="app"
-      className="grid place-items-center h-screen overflow-hidden cursor-default"
+      className="grid place-items-center h-screen overflow-hidden relative cursor-default"
     >
       <main className="z-20 bg-transparent rounded-2xl p-6 overflow-hidden bg-sky-400">
-        <Header onSearch={fetchWeatherData} />
+        <Header onSearch={fetchWeatherData} onCityClick={fetchWeatherData} />
         <DisplayWeather data={weatherData} />
         <div id="weatherGrid" className="grid gap-4 grid-cols-12 ">
           <HourlyWeather
