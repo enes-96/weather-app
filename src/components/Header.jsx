@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 //import { FaGithubAlt } from "react-icons/fa";
-import { HiOutlineMenu } from "react-icons/hi";
+import { HiOutlineMenu, HiOutlinePlusCircle } from "react-icons/hi";
 
 const Header = ({ onSearch, onCityClick }) => {
   const [city, setCity] = useState("");
@@ -24,6 +24,8 @@ const Header = ({ onSearch, onCityClick }) => {
     onCityClick(city);
   };
 
+  const savedCities = ["New York", "Los Angeles", "Chicago", "Houston"];
+
   return (
     <header className="flex justify-between text-xs relative">
       {/*<a
@@ -37,22 +39,31 @@ const Header = ({ onSearch, onCityClick }) => {
     */}
       <HiOutlineMenu
         onClick={toggleMenu}
-        className={`text-xl text-gray-600 cursor-pointer z-50 transition-all ${
+        className={`text-xl text-gray-100 cursor-pointer z-50 transition-all ${
           showMenu ? "ml-2 mt-2" : "ml-0 mt-0"
         }`}
       />
-
       {showMenu && (
         <div
           id="sidebar"
-          className=" z-40 absolute top-0 left-0 w-40 bg-gray-100 rounded-lg p-2 overflow-scroll  "
+          className="z-40 absolute top-0 left-0 w-40 bg-gray-100 rounded-lg p-2 overflow-scroll bg-opacity-20 text-white bg-black backdrop-blur-xl "
         >
           <ul className="flex flex-col gap-2 mt-9 text-lg">
-            <li onClick={handleCityClick("Washington")}>Washington</li>
+            {savedCities.map((city) => (
+              <li
+                key={city}
+                className="cursor-pointer"
+                onClick={() => handleCityClick(city)}
+              >
+                {city}
+              </li>
+            ))}
           </ul>
         </div>
-      )}
+      )}{" "}
+      <HiOutlinePlusCircle className="text-xl text-gray-100 cursor-pointer" />
       <div className="relative bg-opacity-100 backdrop-blur-lg rounded-md">
+        {" "}
         <input
           type="text"
           placeholder="Search"
@@ -75,7 +86,7 @@ const Header = ({ onSearch, onCityClick }) => {
             d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
           />
         </svg>
-      </div>
+      </div>{" "}
     </header>
   );
 };
