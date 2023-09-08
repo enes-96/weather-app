@@ -51,8 +51,8 @@ const Header = ({ onSearch, onCityClick }) => {
         >
           <ul className="flex flex-col gap-2 mt-9 text-lg">
             {savedCities.map((city) => (
-              <li key={city} className="flex items-center">
-                <span className="cursor-pointer" onClick={() => handleCityClick(city)}>
+              <li key={city} className="flex items-center gap-6">
+                <span className="cursor-pointer w-20 overflow-scroll" onClick={() => handleCityClick(city)}>
                   {city[0].toUpperCase() + city.slice(1)}
                 </span>
                 <HiOutlineTrash
@@ -68,7 +68,7 @@ const Header = ({ onSearch, onCityClick }) => {
         <input
           type="text"
           placeholder="Search"
-          className="bg-black bg-opacity-30 placeholder-gray-300 placeholder:font-medium text-white rounded-md py-2 pl-8 pr-4 w-52 focus:outline-none"
+          className="bg-black bg-opacity-30 placeholder-gray-300 placeholder:font-medium text-white rounded-md py-2 pl-8 pr-4 w-52 focus:outline-none "
           value={city}
           onChange={(e) => setCity(e.target.value)}
           onKeyDown={searchOnEnter}
@@ -89,7 +89,7 @@ const Header = ({ onSearch, onCityClick }) => {
         </svg>
         <HiOutlinePlusCircle
           onClick={addCity}
-          className={`text-lg absolute top-1/2 transform -translate-y-1/2 right-2 transition-all ${city.trim() === ""
+          className={`text-lg absolute top-1/2 transform -translate-y-1/2 right-2 transition-all backdrop-blur-3xl ${city.trim() === ""
             ? "opacity-50 text-white cursor-not-allowed"
             : "opacity-100 text-white cursor-pointer"
             }`}
