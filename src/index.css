@@ -26,3 +26,7 @@ main {
 #sidebar {
   height: 680px;
 }
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none;
+}

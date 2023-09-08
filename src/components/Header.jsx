@@ -1,11 +1,12 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-//import { FaGithubAlt } from "react-icons/fa";
-import { HiOutlineMenu, HiOutlinePlusCircle } from "react-icons/hi";
+import { HiOutlineMenu, HiOutlinePlusCircle, HiOutlineTrash } from "react-icons/hi";
 
 const Header = ({ onSearch, onCityClick }) => {
   const [city, setCity] = useState("");
   const [showMenu, setShowMenu] = useState(false);
+  const [savedCities, setSavedCities] = useState(["New York"]);
+
   const handleSearch = () => {
     onSearch(city);
   };
@@ -24,46 +25,46 @@ const Header = ({ onSearch, onCityClick }) => {
     onCityClick(city);
   };
 
-  const savedCities = ["New York", "Los Angeles", "Chicago", "Houston"];
+  const addCity = () => {
+    const formattedCity = city.trim().toLowerCase();
+    if (formattedCity !== "" && !savedCities.some(savedCity => savedCity.toLowerCase() === formattedCity)) {
+      setSavedCities([...savedCities, formattedCity]);
+      setCity("");
+    }
+  };
+
+  const deleteCity = (cityToDelete) => {
+    const updatedCities = savedCities.filter((city) => city !== cityToDelete);
+    setSavedCities(updatedCities);
+  };
 
   return (
     <header className="flex justify-between text-xs relative">
-      {/*<a
-            href="https://github.com/enes-96/weather-app"
-            target="_blank"
-            rel="noreferrer"
-        >
-            {" "}
-            <FaGithubAlt className="text-xl text-gray-100" />
-        </a>
-    */}
       <HiOutlineMenu
         onClick={toggleMenu}
-        className={`text-xl text-gray-100 cursor-pointer z-50 transition-all ${
-          showMenu ? "ml-2 mt-2" : "ml-0 mt-0"
-        }`}
+        className={`text-xl text-gray-100 cursor-pointer z-50 transition-all ${showMenu ? "ml-2 mt-2" : "ml-0 mt-0"}`}
       />
       {showMenu && (
         <div
           id="sidebar"
-          className="z-40 absolute top-0 left-0 w-40 bg-gray-100 rounded-lg p-2 overflow-scroll bg-opacity-20 text-white bg-black backdrop-blur-xl "
+          className="z-40 absolute top-0 left-0 w-40 bg-gray-100 rounded-lg p-2 overflow-scroll bg-opacity-20 text-white backdrop-blur-xl"
         >
           <ul className="flex flex-col gap-2 mt-9 text-lg">
             {savedCities.map((city) => (
-              <li
-                key={city}
-                className="cursor-pointer"
-                onClick={() => handleCityClick(city)}
-              >
-                {city}
+              <li key={city} className="flex items-center">
+                <span className="cursor-pointer" onClick={() => handleCityClick(city)}>
+                  {city[0].toUpperCase() + city.slice(1)}
+                </span>
+                <HiOutlineTrash
+                  className="ml-2 text-gray-500 cursor-pointer"
+                  onClick={() => deleteCity(city)}
+                />
               </li>
             ))}
           </ul>
         </div>
-      )}{" "}
-      <HiOutlinePlusCircle className="text-xl text-gray-100 cursor-pointer" />
+      )}
       <div className="relative bg-opacity-100 backdrop-blur-lg rounded-md">
-        {" "}
         <input
           type="text"
           placeholder="Search"
@@ -86,7 +87,14 @@ const Header = ({ onSearch, onCityClick }) => {
             d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
           />
         </svg>
-      </div>{" "}
+        <HiOutlinePlusCircle
+          onClick={addCity}
+          className={`text-lg absolute top-1/2 transform -translate-y-1/2 right-2 transition-all ${city.trim() === ""
+            ? "opacity-50 text-white cursor-not-allowed"
+            : "opacity-100 text-white cursor-pointer"
+            }`}
+        />
+      </div>
     </header>
   );
 };
