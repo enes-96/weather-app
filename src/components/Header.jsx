@@ -56,7 +56,7 @@ const Header = ({ onSearch, onCityClick }) => {
                   {city[0].toUpperCase() + city.slice(1)}
                 </span>
                 <HiOutlineTrash
-                  className="ml-2 text-gray-500 cursor-pointer"
+                  className="ml-2 text-white cursor-pointer"
                   onClick={() => deleteCity(city)}
                 />
               </li>
@@ -89,7 +89,7 @@ const Header = ({ onSearch, onCityClick }) => {
         </svg>
         <HiOutlinePlusCircle
           onClick={addCity}
-          className={`text-lg absolute top-1/2 transform -translate-y-1/2 right-2 transition-all backdrop-blur-3xl ${city.trim() === ""
+          className={`text-lg absolute top-1/2 transform -translate-y-1/2 right-2 transition-all  ${city.trim() === ""
             ? "opacity-50 text-white cursor-not-allowed"
             : "opacity-100 text-white cursor-pointer"
             }`}
