@@ -3,8 +3,6 @@
 @tailwind utilities;
 
 main {
-  max-width: 980px;
-  height: 728px;
   background-image: linear-gradient(
     to left bottom,
     #0014ff,

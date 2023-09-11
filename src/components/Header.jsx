@@ -49,14 +49,14 @@ const Header = ({ onSearch, onCityClick }) => {
           id="sidebar"
           className="z-40 absolute top-0 left-0 w-40 bg-gray-100 rounded-lg p-2 overflow-scroll bg-opacity-20 text-white backdrop-blur-xl"
         >
-          <ul className="flex flex-col gap-2 mt-9 text-lg">
+          <ul className="flex flex-col gap-4 mt-9 text-lg">
             {savedCities.map((city) => (
               <li key={city} className="flex items-center gap-6">
-                <span className="cursor-pointer w-20 overflow-scroll" onClick={() => handleCityClick(city)}>
+                <span className="text-base cursor-pointer w-20 overflow-scroll" onClick={() => handleCityClick(city)}>
                   {city[0].toUpperCase() + city.slice(1)}
                 </span>
                 <HiOutlineTrash
-                  className="ml-2 text-white cursor-pointer"
+                  className="ml-2 text-white cursor-pointer text-base"
                   onClick={() => deleteCity(city)}
                 />
               </li>
